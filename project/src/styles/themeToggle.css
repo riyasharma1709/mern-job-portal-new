@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Theme Toggle Component Styles (CareerQuest)
+   ========================================================================== */
+
+.theme-toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+
+/* Floating variant for landing & auth pages */
+.theme-toggle-wrapper.floating {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 1100;
+  background: var(--glass-bg, rgba(255, 255, 255, 0.85));
+  backdrop-filter: var(--glass-blur, blur(12px));
+  -webkit-backdrop-filter: var(--glass-blur, blur(12px));
+  padding: 6px 12px;
+  border-radius: 9999px;
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-wrapper.floating:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.14);
+}
+
+[data-theme="dark"] .theme-toggle-wrapper.floating {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* The Pill Switch Button */
+.theme-toggle-btn {
+  position: relative;
+  width: 58px;
+  height: 30px;
+  border-radius: 9999px;
+  background: #e2e8f0;
+  border: 1.5px solid #cbd5e1;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  box-sizing: border-box;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  outline: none;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--primary, #10b981);
+}
+
+.theme-toggle-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.35);
+}
+
+/* Dark mode pill button appearance */
+[data-theme="dark"] .theme-toggle-btn {
+  background: #1e293b;
+  border-color: #475569;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+  border-color: #34d399;
+}
+
+/* Track Icons inside switch */
+.track-icon {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.track-icon.sun {
+  color: #f59e0b;
+}
+
+.track-icon.moon {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .track-icon.moon {
+  color: #60a5fa;
+}
+
+/* Sliding Circle Thumb */
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+  z-index: 2;
+}
+
+/* Active Thumb Position in Dark Mode */
+.theme-toggle-btn.dark .theme-toggle-thumb {
+  transform: translateX(28px);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+}
+
+/* Thumb Icon */
+.thumb-icon {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.thumb-icon.sun-icon {
+  color: #f59e0b;
+}
+
+.thumb-icon.moon-icon {
+  color: #ffffff;
+}
+
+/* Optional Label */
+.theme-toggle-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-main, #334155);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: -0.2px;
+}
+
+[data-theme="dark"] .theme-toggle-label {
+  color: var(--text-main, #f8fafc);
+}

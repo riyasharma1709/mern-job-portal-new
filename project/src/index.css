@@ -1,0 +1,746 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Premium Light Mode Colors - CareerQuest Style */
+  --primary: #10b981; /* vibrant emerald */
+  --primary-hover: #059669;
+  --primary-light: rgba(16, 185, 129, 0.1);
+  --primary-main: #10b981;
+  
+  --secondary: #334155; /* Soft slate */
+  --secondary-hover: #475569;
+  
+  --background: #ffffff; /* Clean white */
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+  
+  --text-main: #334155; /* Soft dark slate for readability */
+  --text-muted: #64748b;
+  
+  --border: #e2e8f0;
+  --border-focus: rgba(16, 185, 129, 0.5);
+  --border-color: #e2e8f0;
+  
+  --danger: #ef4444;
+  --success: #10b981;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-surface: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  
+  /* Soft Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.04), 0 2px 4px -1px rgba(0,0,0,0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.04), 0 4px 6px -2px rgba(0,0,0,0.02);
+  --shadow-glow: 0 0 15px rgba(16, 185, 129, 0.2);
+  --shadow-hover: 0 10px 25px rgba(16, 185, 129, 0.15);
+  
+  /* Glassmorphism Light */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: 1px solid rgba(0, 0, 0, 0.05);
+  --glass-blur: blur(12px);
+  
+  /* Borders & Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Dark Mode Theme System (CareerQuest)
+   ========================================================================== */
+[data-theme="dark"],
+body.dark-theme {
+  --primary: #10b981;
+  --primary-hover: #34d399;
+  --primary-light: rgba(16, 185, 129, 0.2);
+  --primary-main: #10b981;
+  
+  --secondary: #94a3b8;
+  --secondary-hover: #cbd5e1;
+  
+  --background: #0f172a; /* Deep Slate 900 */
+  --surface: #1e293b;    /* Slate 800 */
+  --surface-hover: #334155; /* Slate 700 */
+  
+  --text-main: #f8fafc;  /* Crisp Off-White */
+  --text-muted: #94a3b8; /* Muted Slate */
+  
+  --border: #334155;
+  --border-focus: rgba(16, 185, 129, 0.6);
+  --border-color: #334155;
+  
+  --danger: #f87171;
+  --success: #34d399;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-surface: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.35);
+  --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.5);
+  
+  /* Glassmorphism Dark */
+  --glass-bg: rgba(30, 41, 59, 0.85);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(14px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--background);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Smooth theme transitions across common layout elements */
+.navbar,
+.sidebar,
+.emp-sidebar,
+.admin-sidebar,
+.content,
+.emp-content,
+.admin-content,
+.main,
+.job-card,
+.emp-card,
+.stat-card,
+.search-filter-card,
+.profile-card,
+.assistant-container {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ==========================================================================
+   Comprehensive Dark Mode UI Overrides
+   ========================================================================== */
+
+/* Main layout background in dark mode */
+[data-theme="dark"] .main {
+  background-color: #0b0f19;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(244, 63, 94, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(56, 189, 248, 0.1) 0px, transparent 50%);
+}
+
+/* Navbar in Dark Mode */
+[data-theme="dark"] .navbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+/* Sidebars in Dark Mode */
+[data-theme="dark"] .sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .sidebar a {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .sidebar a:hover {
+  background: var(--surface-hover);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .emp-sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .emp-sidebar a {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .emp-sidebar a:hover {
+  background: var(--surface-hover);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .admin-sidebar {
+  background: #0b1120;
+  border-right: 1px solid var(--border);
+}
+
+/* Employer Content & Cards in Dark Mode */
+[data-theme="dark"] .emp-content {
+  background: #0b0f19;
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .emp-content h1,
+[data-theme="dark"] .emp-content h2,
+[data-theme="dark"] .emp-content h3 {
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .emp-content p {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .emp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .emp-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .emp-card p {
+  color: var(--text-muted) !important;
+}
+
+/* Admin Dashboard in Dark Mode */
+[data-theme="dark"] .admin-content {
+  background: #0b0f19;
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .stat-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .stat-card h3 {
+  color: var(--text-muted);
+}
+
+/* Tables across Admin and Employer */
+[data-theme="dark"] table,
+[data-theme="dark"] .admin-table {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] table th,
+[data-theme="dark"] .admin-table th {
+  background: var(--gradient-primary);
+  color: #ffffff;
+}
+
+[data-theme="dark"] table td,
+[data-theme="dark"] .admin-table td {
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* FindJobs & Job Cards in Dark Mode */
+[data-theme="dark"] .find-jobs-header h2 {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .find-jobs-subtitle {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .search-filter-card {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .search-input-group {
+  background: var(--background);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .search-input-group input {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .search-input-group input::placeholder {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .filter-chip {
+  background: var(--background);
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .filter-chip:hover {
+  background: var(--surface-hover);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .filter-chip.active {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .quick-filters-row {
+  border-top-color: var(--border);
+}
+
+[data-theme="dark"] .quick-filter-label {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .results-count {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .results-count strong {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .section-heading {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .section-heading::after {
+  background: var(--border);
+}
+
+[data-theme="dark"] .job-card {
+  background: var(--surface);
+  border-color: var(--border);
+  border-left-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .job-card:hover {
+  background: var(--surface);
+  border-color: #475569;
+  border-left-color: var(--primary-hover);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .job-card.promoted {
+  background: var(--surface);
+  border-color: rgba(245, 158, 11, 0.3);
+  border-left-color: #f59e0b;
+}
+
+[data-theme="dark"] .job-card h3 {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .job-desc {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .job-media {
+  background: var(--background);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .save-btn-round {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .save-btn-round:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+[data-theme="dark"] .meta-item {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .meta-item.salary {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+[data-theme="dark"] .meta-item.work-location {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="dark"] .skill-pill {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .skill-pill:hover {
+  background: var(--surface-hover);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .job-bottom-row {
+  border-top-color: var(--border);
+}
+
+[data-theme="dark"] .icon-button-details {
+  background: var(--surface);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .icon-button-details:hover {
+  background: var(--primary-light);
+}
+
+[data-theme="dark"] .btn-map-toggle {
+  background: var(--background);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: #a5b4fc;
+}
+
+[data-theme="dark"] .btn-map-toggle:hover {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="dark"] .btn-video-preview {
+  background: rgba(225, 29, 72, 0.12);
+  border-color: rgba(225, 29, 72, 0.3);
+  color: #fb7185;
+}
+
+[data-theme="dark"] .inline-map-card {
+  background: var(--background);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .inline-map-header span {
+  color: var(--text-main);
+}
+
+/* Modals in Dark Mode */
+[data-theme="dark"] .company-modal-content,
+[data-theme="dark"] .job-details-modal,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .resume-modal {
+  background: var(--surface);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .company-info-wrapper h2,
+[data-theme="dark"] .job-details-modal h2,
+[data-theme="dark"] .modal-content h3 {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .company-meta span {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .close-modal,
+[data-theme="dark"] .modal-close-btn,
+[data-theme="dark"] .modal-close {
+  background: var(--background);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .close-modal:hover,
+[data-theme="dark"] .modal-close-btn:hover,
+[data-theme="dark"] .modal-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--danger);
+}
+
+/* Assistant Chatbot in Dark Mode */
+[data-theme="dark"] .assistant-container {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .quick-prompts-bar {
+  background: var(--background);
+  border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .quick-prompts-label {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .prompt-chip {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .prompt-chip:hover:not(:disabled) {
+  background: rgba(37, 99, 235, 0.2);
+  border-color: #3b82f6;
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .chat-messages {
+  background: #0b0f19;
+}
+
+[data-theme="dark"] .message-row.bot .message-bubble {
+  background: var(--surface);
+  color: var(--text-main);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .msg-bold {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .chat-job-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .job-title-chat {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .meta-badge.location {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .job-skill-chip {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .chat-save-btn {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .typing-bubble {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .typing-text {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .assistant-input-area {
+  background: var(--surface);
+  border-top-color: var(--border);
+}
+
+[data-theme="dark"] .assistant-input {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .assistant-input:focus {
+  background: #0b0f19;
+  border-color: #2563eb;
+}
+
+/* Profile in Dark Mode */
+[data-theme="dark"] .profile-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .profile-card h2 {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .profile-group input {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .detail-item {
+  background: var(--background);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .detail-item span {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .skill-tag {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .resume-download {
+  background: var(--background);
+  color: var(--text-main);
+  border-color: var(--border);
+}
+
+/* Forms & Inputs across Employer and Admin in Dark Mode */
+[data-theme="dark"] .emp-form,
+[data-theme="dark"] .profile-form,
+[data-theme="dark"] .add-job-wrapper,
+[data-theme="dark"] .admin-form {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .add-job-content {
+  background: #0b0f19;
+}
+
+[data-theme="dark"] .add-job-header h2 {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .add-job-header p {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .form-group label,
+[data-theme="dark"] .profile-form label,
+[data-theme="dark"] .emp-form label {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .add-job-wrapper input,
+[data-theme="dark"] .add-job-wrapper textarea,
+[data-theme="dark"] .profile-form input,
+[data-theme="dark"] .profile-form textarea,
+[data-theme="dark"] .emp-form input,
+[data-theme="dark"] .emp-form textarea,
+[data-theme="dark"] .admin-form input,
+[data-theme="dark"] .admin-form textarea,
+[data-theme="dark"] .job-form input {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .add-job-wrapper input[type="file"],
+[data-theme="dark"] .profile-form input[type="file"],
+[data-theme="dark"] .emp-form input[type="file"] {
+  background: var(--background);
+  border-color: #475569;
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .live-map-card {
+  background: var(--background);
+  border-color: var(--border);
+}
+
+/* Auth Screens in Dark Mode */
+[data-theme="dark"] .auth-container {
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .auth-container .auth-right {
+  background: var(--surface);
+}
+
+[data-theme="dark"] .auth-container .auth-right h1,
+[data-theme="dark"] .auth-container .auth-right h2 {
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .auth-container .auth-right .input-group input {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .auth-container .auth-right .input-group label {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .auth-container .auth-right .input-group input:focus + label,
+[data-theme="dark"] .auth-container .auth-right .input-group input:not(:placeholder-shown) + label {
+  background: var(--surface);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .auth-container .auth-right .auth-text {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .employer-auth-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .employer-auth-box h2 {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .employer-auth-box input {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .employer-auth-box p {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .employer-auth-box a {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .admin-login-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+/* Dark mode scrollbars */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
